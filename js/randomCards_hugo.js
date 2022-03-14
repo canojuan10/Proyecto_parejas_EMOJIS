@@ -14,6 +14,5 @@ const playBoard = document.querySelector("#playboard");
 const collection = playBoard.getElementsByClassName("card");
 
 for (let i = 0; i < arrayGrid.length; i++) {
-  collection[i].style.gridArea = arrayGrid[i];
-  console.log(collection[i].style.gridArea);
+  collection[i].style.gridArea = "card" + arrayGrid[i];
 }
