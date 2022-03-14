@@ -1,15 +1,14 @@
 :root {
   --fontSizeBase: 18px;
-  --fontSizeCaptionText: 14.4px;
-  --fontSizeH1: 54.9px;
-  --fontSizeH2: 43.9px;
-  --fontSizeH3: 35.2px;
-  --fontSizeH4: 28.1px;
-  --fontSizeH5: 22.5px;
+  --fontSizeCaptionText: 14px;
+  --fontSizeH1: 55px;
+  --fontSizeH2: 44px;
+  --fontSizeH3: 35px;
+  --fontSizeH4: 28px;
+  --fontSizeH5: 23px;
   --colorBasicBlack: #172121;
   --colorYellow: hsl(60, 100%, 50%, 0.5);
   --colorWhite: hsl(160, 10%, 94%, 0.7);
-  --colorSara: #9b9b93;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&display=swap");
@@ -38,10 +37,10 @@ main {
   flex-grow: 1;
   display: grid;
   grid-template-columns: 1fr 400px;
-  grid-auto-rows: 1fr 150px;
+  grid-auto-rows: 150px 1fr;
   grid-template-areas:
-    "playboard brief"
-    "playboard scoreboard";
+    "playboard scoreboard"
+    "playboard brief";
 }
 #brief {
   grid-area: brief;
@@ -49,17 +48,28 @@ main {
 #scoreboard {
   grid-area: scoreboard;
   display: flex;
-  flex-direction: column;
-  justify-content: start;
+  align-items: center;
+  justify-content: center;
   background-color: none;
   outline: solid 4px var(--colorBasicBlack);
-  margin: 2rem;
+  margin-right: 2rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  color: var(--colorBasicBlack);
+  font-size: 18px;
+  gap: 32px;
 }
 #playboard {
   justify-content: center;
   grid-template-columns: 200px 200px 200px 200px;
   display: grid;
   grid-area: playboard;
+  grid-template-areas:
+    "1 2 3 4"
+    "5 6 7 8"
+    "9 10 11 12"
+    "13 14 15 16";
 }
 footer {
   font-weight: 700;
@@ -80,29 +90,18 @@ h5 {
 h1 {
   letter-spacing: 1rem;
   text-align: center;
-  flex-grow: 1;
+  flex-grow: 3;
   font-size: var(--fontSizeH1);
 }
 div h2 {
-  text-decoration: underline;
   color: var(--colorBasicBlack);
   text-align: center;
   margin-bottom: 0rem;
 }
 #scoreboard p {
-  text-align: center;
-  color: var(--colorBasicBlack);
-  font-size: var(--fontSizeH3);
+  font-size: var(--fontSizeH2);
 }
-/* article {
-  background: url(../imaxes/habSmallLogo.svg) no-repeat center center;
-  box-shadow: 7px 5px 15px black;
-  border-radius: 5px;
-  margin: 1rem;
-  height: 160px;
-  width: 160px;
-  background-color: var(--colorBasicBlack);
-} */
+
 button {
   background: none;
   border: none;
@@ -113,6 +112,7 @@ button {
   font-weight: 700;
   font-size: var(--fontSizeH5);
   margin: 1rem;
+  margin-right: 10rem;
   padding: 0.5rem 1rem;
   outline: solid 4px var(--colorBasicBlack);
 }
@@ -131,6 +131,7 @@ button:focus {
   outline: solid 4px var(--colorBasicBlack);
 }
 #start {
+  visibility: hidden;
   font-size: var(--fontSizeH1);
   outline-width: 8px;
   position: absolute;
