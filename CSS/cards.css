@@ -1,17 +1,10 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 article {
-  width: 250px;
-  height: 350px;
+  width: 160px;
+  height: 200px;
   /* propiedade para o efecto 3d, canto mais baixo o número pero efecto 3d */
   perspective: 500px;
   transition: transform 1s;
   transform-style: preserve-3d;
-  position: absolute;
 }
 
 .front,
@@ -30,12 +23,24 @@ article {
 
 .front {
   transform: rotateY(180deg);
-  background: linear-gradient(black, gray);
+  background-color: whitesmoke;
+  text-align: center;
+  font-size: 128px;
 }
 .back {
+  background: url(../imaxes/habSmallLogo.svg) no-repeat center center;
   background-color: black;
 }
 .card.flipped {
   transform: rotateY(180deg);
   transition: transform 0.5s;
 }
+/* article {
+  
+  box-shadow: 7px 5px 15px black;
+  border-radius: 5px;
+  margin: 1rem;
+  height: 160px;
+  width: 160px;
+  background-color: var(--colorBasicBlack);
+} */
