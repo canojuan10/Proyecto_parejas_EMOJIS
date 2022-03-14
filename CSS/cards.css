@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+article {
+  width: 250px;
+  height: 350px;
+  /* propiedade para o efecto 3d, canto mais baixo o número pero efecto 3d */
+  perspective: 500px;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  position: absolute;
+}
+
+.front,
+.back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 1rem;
+  /* novas utilidades, para non poder seleccionar o texto das cartas, e ocultar as caras */
+  backface-visibility: hidden;
+  user-select: none;
+}
+
+.front {
+  transform: rotateY(180deg);
+  background: linear-gradient(black, gray);
+}
+.back {
+  background-color: black;
+}
+.card.flipped {
+  transform: rotateY(180deg);
+  transition: transform 0.5s;
+}
