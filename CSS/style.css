@@ -66,10 +66,10 @@ main {
   display: grid;
   grid-area: playboard;
   grid-template-areas:
-    "1 2 3 4"
-    "5 6 7 8"
-    "9 10 11 12"
-    "13 14 15 16";
+    "card1 card2 card3 card4"
+    "card5 card6 card7 card8"
+    "card9 card10 card11 card12"
+    "card13 card14 card15 card16";
 }
 footer {
   font-weight: 700;
@@ -135,7 +135,7 @@ button:focus {
   font-size: var(--fontSizeH1);
   outline-width: 8px;
   position: absolute;
-  right: 50%;
+  right: 45%;
   top: 42%;
 }
 
