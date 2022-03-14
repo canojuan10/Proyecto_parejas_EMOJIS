@@ -10,18 +10,21 @@
       name="description"
       content="Hack A Boss Bootcamp_Memory Emojis Proyect_2022"
     />
-    <link rel="stylesheet" href="*" />
+
+    <link rel="stylesheet" href="/CSS/style.css" />
+    <link rel="icon" href="*" 
     <link rel="icon" href="./imaxes/icono.ico" />
 
   </head>
   <body>
       <header>
-          <h1>MEMORY EMOJIS</h1>
-          <button type="reset">Reset</button>
-          <button type="button">Start</button>
+          <h1>😍MEMORY EMOJIS😍</h1>
+          <button id="reset" >Reset</button>
+          
       </header>
       <main>
           <section id="playboard">
+            <button id="start" >Start</button>
               <article id="card1"class="card">
                       <div class="front">
                       </div>
@@ -31,6 +34,7 @@
               </article>
                 <article id="card2"class="card">
                       <div class="front">
+
                       </div>
                       <div class="back">
                         <img src="./imaxes/HAB.png">
@@ -137,19 +141,18 @@
              
           </section>
           <div id="scoreboard">
-              <h2>Número de intentenos</h2>
+              <h2>Número de intentos</h2>
               <p>0</p>
           </div>
           <aside id="brief">
-              <h2>Insrucciones</h2>
+              <h2>Instrucciones</h2>
               <ul>
-                  <li>Para inicar el juego, hacer "click" en el botón "Start"</li>
-                  <li>En cada jugada solo se pueden voltear dos cartas.</li>
-                  <li>Si las cartas no contienen la misma figura, dispones de 1 segundo, antes de que se vuelvan a ocultar</li>
-                  <li>En caso de que tengan la misma figura, esta quedará a la vista</li>
-                  <li>Tu puntuación final será el número de intentos usados en emparejar todas las cartas</li>
-                  <li>Dispones de un número ilimitado de intentos</li>
-                  <li>Pudes reiniciar la partida en cualquier momento. Unicamente debes pulsar el botón "Reset"</li>
+                  <li>Pulsa START para empezar</li>
+                  <li>Voltea las cartas de dos en dos y busca parejas de cartas iguales</li>
+                  <li>Si las cartas no son iguales se darán la vuelta tras un segundo, ¡aprovecha para memorizarlas!</li>
+                  <li>El marcador indica el numero de intentos, ¡menos intentons mejor puntuación!</li>
+                  <li>Tienes tantos intentos como necesites</li>
+                  <li>¿Te esta yendo mal la partida? Pulsa RESET para volver a empezar</li>
               <ul>
           </aside>
 

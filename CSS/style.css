@@ -7,9 +7,11 @@
   --fontSizeH4: 28.1px;
   --fontSizeH5: 22.5px;
   --colorBasicBlack: #172121;
-  --colorRareBlue: #258ea6;
-  --colorWhite: #eff2f1;
+  --colorYellow: hsl(60, 100%, 50%, 0.5);
+  --colorWhite: hsl(160, 10%, 94%, 0.7);
+  --colorSara: #9b9b93;
 }
+
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&display=swap");
 * {
   padding: 0;
@@ -18,6 +20,53 @@
   box-sizing: border-box;
   font-family: "IBM Plex Mono", monospace;
   line-height: 1.5;
+  color: var(--colorBasicBlack);
+}
+body {
+  background: linear-gradient(135deg, var(--colorYellow), var(--colorWhite)),
+    url(../imaxes/emojisBackground.jpg) no-repeat center center / cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+main {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  grid-auto-rows: 1fr 150px;
+  grid-template-areas:
+    "playboard brief"
+    "playboard scoreboard";
+}
+#brief {
+  grid-area: brief;
+}
+#scoreboard {
+  grid-area: scoreboard;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  background-color: none;
+  outline: solid 4px var(--colorBasicBlack);
+  margin: 2rem;
+}
+#playboard {
+  justify-content: center;
+  grid-template-columns: 200px 200px 200px 200px;
+  display: grid;
+  grid-area: playboard;
+}
+footer {
+  font-weight: 700;
+  background-color: var(--colorWhite);
+  justify-content: space-around;
+  display: flex;
+  border-top: solid 1px var(--colorBasicBlack);
 }
 h1,
 h2,
@@ -26,9 +75,72 @@ h4,
 h5 {
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: var(--colorRareBlue);
+  color: var(--colorBasicBlack);
 }
-p {
+h1 {
+  letter-spacing: 1rem;
+  text-align: center;
+  flex-grow: 1;
+  font-size: var(--fontSizeH1);
+}
+div h2 {
+  text-decoration: underline;
+  color: var(--colorBasicBlack);
+  text-align: center;
+  margin-bottom: 0rem;
+}
+#scoreboard p {
+  text-align: center;
+  color: var(--colorBasicBlack);
+  font-size: var(--fontSizeH3);
+}
+/* article {
+  background: url(../imaxes/habSmallLogo.svg) no-repeat center center;
+  box-shadow: 7px 5px 15px black;
+  border-radius: 5px;
+  margin: 1rem;
+  height: 160px;
+  width: 160px;
+  background-color: var(--colorBasicBlack);
+} */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.1rem;
+  height: fit-content;
+  color: var(--colorBasicBlack);
+  font-weight: 700;
+  font-size: var(--fontSizeH5);
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  outline: solid 4px var(--colorBasicBlack);
+}
+button:hover {
+  color: whitesmoke;
+  outline: none;
+  text-shadow: none;
+  background-color: var(--colorBasicBlack);
+  outline: solid 4px var(--colorBasicBlack);
+}
+button:focus {
+  color: yellow;
+  outline: none;
+  text-shadow: none;
+  background-color: var(--colorBasicBlack);
+  outline: solid 4px var(--colorBasicBlack);
+}
+#start {
+  font-size: var(--fontSizeH1);
+  outline-width: 8px;
+  position: absolute;
+  right: 50%;
+  top: 42%;
+}
+
+li {
+  font-size: var(--fontSizeH5);
   margin-bottom: 1rem;
-  color: var(--colorWhite);
+
+  margin-right: 2rem;
 }
