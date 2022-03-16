@@ -1,12 +1,14 @@
 "use strict";
 
 const cards = document.querySelectorAll(".card");
+const intents = document.querySelector("#intents");
+
 let card1;
 let card1Value;
 let card2;
 let card2Value;
 let flippedCards;
-console.log(cards);
+
 const compareCards = (e) => {
   const currentCard = e.currentTarget;
   currentCard.classList.add("flipped");
@@ -53,6 +55,7 @@ const compareCards = (e) => {
     }
   }, 500);
 };
+
 const reveal = (e) => {
   const currentCard = e.currentTarget;
   currentCard.classList.add("flipped");
@@ -79,7 +82,6 @@ const randomizeCards = () => {
   }
 };
 const addCounter = () => {
-  const intents = document.querySelector("#intents");
   console.dir(intents);
   let numberIntents = +intents.textContent;
   numberIntents++;
