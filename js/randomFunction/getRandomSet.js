@@ -1,4 +1,5 @@
 "use strict";
+
 export const getRandomSet = (numberOfCards = 16) => {
   const setRandom = new Set();
   for (let i = 0; i <= numberOfCards; i++) {
