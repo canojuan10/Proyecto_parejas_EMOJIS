@@ -145,3 +145,6 @@ li {
 
   margin-right: 2rem;
 }
+.winner {
+  pointer-events: none;
+}

@@ -2,6 +2,7 @@
 
 const cards = document.querySelectorAll(".card");
 const intents = document.querySelector("#intents");
+let points = 0;
 
 let card1;
 let card1Value;
@@ -10,6 +11,8 @@ let card2Value;
 let flippedCards;
 
 const compareCards = (e) => {
+  console.dir(e);
+  console.log(e.type);
   const currentCard = e.currentTarget;
   currentCard.classList.add("flipped");
   card1 = currentCard;
@@ -22,15 +25,20 @@ const compareCards = (e) => {
   for (const card of cards) {
     card.addEventListener("click", reveal);
   }
-  flippedCards = document.querySelectorAll("flipped");
-  for (const card of flippedCards) {
-    card.removeEventListener("click", reveal);
-  }
+  //estas lineas se puecen eliminar=27-31?
+  // flippedCards = document.querySelectorAll("flipped");
+
+  // for (const card of flippedCards) {
+  //   card.removeEventListener("click", reveal);
+  // }
 
   const idInterval = setInterval(() => {
     if (card1Value && card2Value) {
       if (card1Value === card2Value) {
         console.log("son iguales");
+        addCounterPoints();
+        card1.classList.add("winner");
+        card2.classList.add("winner");
       } else {
         console.log("no son iguales");
         setTimeout(() => {
@@ -47,16 +55,17 @@ const compareCards = (e) => {
         for (const card of cards) {
           card.addEventListener("click", compareCards);
         }
-        flippedCards = document.querySelectorAll("flipped");
-        for (const card of flippedCards) {
-          card.removeEventListener("click", compareCards);
-        }
+        // flippedCards = document.querySelectorAll("flipped");
+        // for (const card of flippedCards) {
+        //   card.removeEventListener("click", compareCards);
+        // }
       }, 2000);
     }
   }, 500);
 };
 
 const reveal = (e) => {
+  console.log("reveal");
   const currentCard = e.currentTarget;
   currentCard.classList.add("flipped");
   card2 = currentCard;
@@ -82,7 +91,6 @@ const randomizeCards = () => {
   }
 };
 const addCounter = () => {
-  console.dir(intents);
   let numberIntents = +intents.textContent;
   numberIntents++;
   intents.textContent = numberIntents;
@@ -92,4 +100,9 @@ const addCounter = () => {
 for (const card of cards) {
   card.addEventListener("click", compareCards);
 }
-randomizeCards();
+// randomizeCards();
+
+const addCounterPoints = () => {
+  points = points + 1;
+  console.log(points);
+};
