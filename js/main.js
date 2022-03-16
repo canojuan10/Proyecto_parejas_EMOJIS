@@ -1,4 +1,6 @@
-"use strict";
+import { randomizeCards } from "./randomFunction/randomizeCards.js";
+
+("use strict");
 
 const cards = document.querySelectorAll(".card");
 let card1;
@@ -6,7 +8,7 @@ let card1Value;
 let card2;
 let card2Value;
 let flippedCards;
-console.log(cards);
+
 const compareCards = (e) => {
   const currentCard = e.currentTarget;
   currentCard.classList.add("flipped");
@@ -20,7 +22,7 @@ const compareCards = (e) => {
   for (const card of cards) {
     card.addEventListener("click", reveal);
   }
-  flippedCards = document.querySelectorAll("flipped");
+  flippedCards = document.querySelectorAll(".flipped");
   for (const card of flippedCards) {
     card.removeEventListener("click", reveal);
   }
@@ -28,9 +30,7 @@ const compareCards = (e) => {
   const idInterval = setInterval(() => {
     if (card1Value && card2Value) {
       if (card1Value === card2Value) {
-        console.log("son iguales");
       } else {
-        console.log("no son iguales");
         setTimeout(() => {
           card1.classList.remove("flipped");
           card2.classList.remove("flipped");
@@ -45,7 +45,7 @@ const compareCards = (e) => {
         for (const card of cards) {
           card.addEventListener("click", compareCards);
         }
-        flippedCards = document.querySelectorAll("flipped");
+        flippedCards = document.querySelectorAll(".flipped");
         for (const card of flippedCards) {
           card.removeEventListener("click", compareCards);
         }
@@ -63,21 +63,21 @@ const reveal = (e) => {
   }
 };
 
-const randomizeCards = () => {
-  const playBoard = document.querySelector("#playboard");
-  const collectionCards = playBoard.children;
-  const setRandom = new Set();
-  for (let i = 0; i <= 16; i++) {
-    const numberRandom = "card" + Math.ceil(Math.random() * 16);
-    setRandom.add(numberRandom);
-    i = setRandom.size;
-  }
-  const arrayRandom = [...setRandom];
+// const randomizeCards = () => {
+//   const playBoard = document.querySelector("#playboard");
+//   const collectionCards = playBoard.children;
+//   const setRandom = new Set();
+//   for (let i = 0; i <= 16; i++) {
+//     const numberRandom = "card" + Math.ceil(Math.random() * 16);
+//     setRandom.add(numberRandom);
+//     i = setRandom.size;
+//   }
+//   const arrayRandom = [...setRandom];
 
-  for (let i = 0; i < setRandom.size; i++) {
-    collectionCards[i].style.gridArea = arrayRandom[i];
-  }
-};
+//   for (let i = 0; i < setRandom.size; i++) {
+//     collectionCards[i].style.gridArea = arrayRandom[i];
+//   }
+// };
 const addCounter = () => {
   const intents = document.querySelector("#intents");
   console.dir(intents);
