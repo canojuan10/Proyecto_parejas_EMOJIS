@@ -1,5 +1,11 @@
 import { randomizeCards } from "./randomFunction/randomizeCards.js";
-import { addCounter } from "./auxiliaryFunctions/addIntentCounter.js";
+import { addIntentCounter } from "./auxiliaryFunctions/addIntentCounter.js";
+import {
+  putUp,
+  putDown,
+  removeClickListener,
+  addClickListener,
+} from "./auxiliaryFunctions/cardComparation.js";
 ("use strict");
 
 const cards = document.querySelectorAll(".card");
@@ -11,60 +17,47 @@ let flippedCards;
 
 const compareCards = (e) => {
   const currentCard = e.currentTarget;
-  currentCard.classList.add("flipped");
+  putUp(currentCard);
   card1 = currentCard;
   card1Value = currentCard.dataset.cardImg;
+  removeClickListener(cards, compareCards);
+  addClickListener(cards, reveal);
 
-  for (const card of cards) {
-    card.removeEventListener("click", compareCards);
-  }
-
-  for (const card of cards) {
-    card.addEventListener("click", reveal);
-  }
   flippedCards = document.querySelectorAll(".flipped");
-  for (const card of flippedCards) {
-    card.removeEventListener("click", reveal);
-  }
+  removeClickListener(flippedCards, reveal);
 
   const idInterval = setInterval(() => {
     if (card1Value && card2Value) {
       if (card1Value === card2Value) {
       } else {
         setTimeout(() => {
-          card1.classList.remove("flipped");
-          card2.classList.remove("flipped");
+          putDown(card1);
+          putDown(card2);
         }, 1000);
       }
       clearInterval(idInterval);
 
       card1Value = "";
       card2Value = "";
-      addCounter();
+      addIntentCounter();
       setTimeout(() => {
-        for (const card of cards) {
-          card.addEventListener("click", compareCards);
-        }
+        addClickListener(cards, compareCards);
+
         flippedCards = document.querySelectorAll(".flipped");
-        for (const card of flippedCards) {
-          card.removeEventListener("click", compareCards);
-        }
+        removeClickListener(flippedCards, compareCards);
       }, 2000);
     }
   }, 500);
 };
 const reveal = (e) => {
   const currentCard = e.currentTarget;
-  currentCard.classList.add("flipped");
+  putUp(currentCard);
   card2 = currentCard;
   card2Value = currentCard.dataset.cardImg;
-  for (const card of cards) {
-    card.removeEventListener("click", reveal);
-  }
+  removeClickListener(cards, reveal);
 };
 
 //___________________________________________________________________
-for (const card of cards) {
-  card.addEventListener("click", compareCards);
-}
+
+addClickListener(cards, compareCards);
 randomizeCards();
