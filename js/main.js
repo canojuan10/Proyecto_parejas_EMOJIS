@@ -9,13 +9,22 @@ import {
 ("use strict");
 
 const cards = document.querySelectorAll(".card");
+
+const intents = document.querySelector("#intents");
+
+
 let points = 0;
+
 let card1;
 let card1Value;
 let card2;
 let card2Value;
 let flippedCards;
+
+
+
 const startButton = document.querySelector("#start");
+
 const compareCards = (e) => {
   const currentCard = e.currentTarget;
   putUp(currentCard);
@@ -53,6 +62,7 @@ const compareCards = (e) => {
     }
   }, 500);
 };
+
 const reveal = (e) => {
   const currentCard = e.currentTarget;
   putUp(currentCard);
@@ -62,6 +72,25 @@ const reveal = (e) => {
 };
 const startGame = () => {
   const playBoard = document.querySelector("#playboard");
+
+  const collectionCards = playBoard.children;
+  const setRandom = new Set();
+  for (let i = 0; i <= 16; i++) {
+    const numberRandom = "card" + Math.ceil(Math.random() * 16);
+    setRandom.add(numberRandom);
+    i = setRandom.size;
+  }
+  const arrayRandom = [...setRandom];
+
+  for (let i = 0; i < setRandom.size; i++) {
+    collectionCards[i].style.gridArea = arrayRandom[i];
+  }
+};
+const addCounter = () => {
+  console.dir(intents);
+  let numberIntents = +intents.textContent;
+  numberIntents++;
+  intents.textContent = numberIntents;
   points = 0;
   randomizeCards();
   startButton.classList.add("hidden");
