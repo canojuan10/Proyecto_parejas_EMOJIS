@@ -9,7 +9,7 @@ import {
 ("use strict");
 
 const cards = document.querySelectorAll(".card");
-let points = 3;
+let points = 0;
 let card1;
 let card1Value;
 let card2;
@@ -31,6 +31,8 @@ const compareCards = (e) => {
   const idInterval = setInterval(() => {
     if (card1Value && card2Value) {
       if (card1Value === card2Value) {
+        points++;
+        console.log(points);
       } else {
         setTimeout(() => {
           putDown(card1);
@@ -70,7 +72,7 @@ const startGame = () => {
 //___________________________________________________________________
 startButton.addEventListener("click", startGame);
 addClickListener(cards, compareCards);
-randomizeCards();
+// randomizeCards();
 
 const reset = document.querySelector("#reset");
 reset.addEventListener("click", () => {
