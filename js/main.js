@@ -55,9 +55,9 @@ const compareCards = (e) => {
 
         // flippedCards = document.querySelectorAll(".flipped");
         // removeClickListener(flippedCards, compareCards);
-      }, 2000);
+      }, 1000);
     }
-  }, 500);
+  }, 200);
 };
 
 const reveal = (e) => {
