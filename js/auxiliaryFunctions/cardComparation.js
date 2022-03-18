@@ -26,10 +26,10 @@ export const addClickListener = (arrayWithListener, clickEvent) => {
     card.addEventListener("click", clickEvent);
   }
 };
-export const reveal = (e) => {
+const reveal = (e) => {
   card2 = e.currentTarget;
   putUp(card2);
-  card2Value = currentCard.dataset.cardImg;
+  card2Value = sayCardImage(card2);
   removeClickListener(cards, reveal);
 };
 
