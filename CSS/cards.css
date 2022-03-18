@@ -4,6 +4,7 @@ article {
   perspective: 500px;
   transition: transform 1s;
   transform-style: preserve-3d;
+  margin: 0.5rem;
 }
 
 .front,
@@ -17,6 +18,7 @@ article {
   border-radius: 1rem;
   backface-visibility: hidden;
   user-select: none;
+  margin-bottom: 1rem;
 }
 
 .front {
@@ -26,11 +28,27 @@ article {
   font-size: 128px;
 }
 .back {
-  background: url(../imaxes/habSmallLogo.svg) no-repeat center center;
+  background: url(../imaxes/habSmallLogo.svg) no-repeat center center/75%;
   background-color: black;
 }
 .card.flipped {
   pointer-events: none;
   transform: rotateY(180deg);
   transition: transform 1s;
+}
+
+/* media query */
+
+@media (max-width: 1000px) {
+  article {
+    width: 100px;
+    height: 120px;
+  }
+  .front {
+    font-size: 64px;
+  }
+  .back {
+    background: url(../imaxes/habSmallLogo.svg) no-repeat center center/75%;
+    background-color: black;
+  }
 }

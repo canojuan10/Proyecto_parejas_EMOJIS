@@ -10,7 +10,6 @@
   --colorYellow: hsl(60, 100%, 50%, 0.5);
   --colorWhite: hsl(160, 10%, 94%, 0.7);
 }
-
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&display=swap");
 * {
   padding: 0;
@@ -113,7 +112,7 @@ button {
   font-weight: 700;
   font-size: var(--fontSizeH5);
   margin: 1rem;
-  margin-right: 10rem;
+  margin-right: 10%;
   padding: 0.5rem 1rem;
   outline: solid 4px var(--colorBasicBlack);
 }
@@ -138,14 +137,13 @@ button:focus {
   right: 45%;
   top: 42%;
 }
-
 li {
   font-size: var(--fontSizeH5);
   margin-bottom: 1rem;
   margin-right: 2rem;
 }
 #win-msg {
-  padding: 2rem 0;
+  padding: 2rem 1rem;
   border-radius: 20px;
   font-size: var(--fontSizeBase);
   text-align: center;
@@ -161,12 +159,52 @@ li {
   box-shadow: 10px 10px 10px var(--colorBasicBlack);
 }
 #win-msg h2 {
+  color: var(--colorWhite);
   padding-bottom: 2rem;
   font-size: var(--fontSizeH3);
 }
-
+#win-msg p {
+  color: var(--colorWhite);
+}
 .hidden {
   pointer-events: none;
   opacity: 0;
   transition: opacity 1s;
+}
+/* Media query */
+@media (max-width: 1000px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #scoreboard {
+    width: 300px;
+    margin: 1rem 0;
+  }
+  #brief {
+    margin: 2rem;
+  }
+  #playboard {
+    justify-content: center;
+    grid-template-columns: 120px 120px 120px 120px;
+  }
+}
+@media (max-width: 500px) {
+  #playboard {
+    grid-template-columns: 120px 120px 120px;
+
+    align-content: center;
+    justify-items: center;
+    grid-template-areas:
+      "card1 card2 card3"
+      "card4 card5 card6"
+      "card7 card8 card9"
+      "card10 card11 card12"
+      "card13 card14 card15";
+  }
+  #card16 {
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
 }

@@ -73,10 +73,11 @@ const startGame = () => {
 };
 
 const win = () => {
-  console.log("hola");
   rules.classList.add("hidden");
-  divWinMsg.firstChild.textContent = `Felicidades has encontrado todas las parejas en ${intents.textContent} intentos.`;
-  divWinMsg.lastChild.textContent = "Si quieres jugar otra partida pulsa reset";
+
+  divWinMsg.firstElementChild.textContent = `Felicidades has encontrado todas las parejas en ${intents.textContent} intentos.`;
+  divWinMsg.lastElementChild.innerHTML =
+    "Si quieres jugar otra partida pulsa <strong style='color:white;'> RESET </strong>";
   playBoard.classList.add("hidden");
   divWinMsg.classList.remove("hidden");
 };
