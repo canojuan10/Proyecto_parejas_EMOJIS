@@ -1,7 +1,6 @@
 article {
   width: 160px;
   height: 200px;
-  /* propiedade para o efecto 3d, canto mais baixo o número pero efecto 3d */
   perspective: 500px;
   transition: transform 1s;
   transform-style: preserve-3d;
@@ -16,7 +15,6 @@ article {
   flex-direction: column;
   justify-content: center;
   border-radius: 1rem;
-  /* novas utilidades, para non poder seleccionar o texto das cartas, e ocultar as caras */
   backface-visibility: hidden;
   user-select: none;
 }
@@ -35,18 +33,4 @@ article {
   pointer-events: none;
   transform: rotateY(180deg);
   transition: transform 1s;
-}
-/* article {
-  
-  box-shadow: 7px 5px 15px black;
-  border-radius: 5px;
-  margin: 1rem;
-  height: 160px;
-  width: 160px;
-  background-color: var(--colorBasicBlack);
-} */
-.hidden {
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 1s;
 }

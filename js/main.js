@@ -1,24 +1,23 @@
-import { randomizeCards } from "./randomFunction/randomizeCards.js";
+import { randomizeCards } from "./auxiliaryFunctions/randomCards_hugo.js";
 import { addIntentCounter } from "./auxiliaryFunctions/addIntentCounter.js";
 import {
   putUp,
   putDown,
   removeClickListener,
   addClickListener,
-} from "./auxiliaryFunctions/cardComparation.js";
+} from "./auxiliaryFunctions/cardsOpations.js";
 ("use strict");
-
+const rules = document.querySelector("#brief");
 const cards = document.querySelectorAll(".card");
-
+const playBoard = document.querySelector("#playboard");
 const intents = document.querySelector("#intents");
+const divWinMsg = document.querySelector("#win-msg");
 
 let points = 0;
-
 let card1;
 let card1Value;
 let card2;
 let card2Value;
-let flippedCards;
 
 const startButton = document.querySelector("#start");
 
@@ -29,10 +28,6 @@ const compareCards = (e) => {
   card1Value = currentCard.dataset.cardImg;
   removeClickListener(cards, compareCards);
   addClickListener(cards, reveal);
-
-  flippedCards = document.querySelectorAll(".flipped");
-  console.log(flippedCards);
-  removeClickListener(flippedCards, reveal);
 
   const idInterval = setInterval(() => {
     if (card1Value && card2Value) {
@@ -50,11 +45,11 @@ const compareCards = (e) => {
       card1Value = "";
       card2Value = "";
       addIntentCounter();
+      if (points === 8) {
+        win();
+      }
       setTimeout(() => {
         addClickListener(cards, compareCards);
-
-        // flippedCards = document.querySelectorAll(".flipped");
-        // removeClickListener(flippedCards, compareCards);
       }, 1000);
     }
   }, 200);
@@ -69,22 +64,33 @@ const reveal = (e) => {
 };
 
 const startGame = () => {
-  const playBoard = document.querySelector("#playboard");
   points = 0;
-  randomizeCards();
+  // randomizeCards();
   startButton.classList.add("hidden");
   setTimeout(() => {
     playBoard.classList.remove("hidden");
   }, 1000);
 };
 
-//___________________________________________________________________
+const win = () => {
+  console.log("hola");
+  rules.classList.add("hidden");
+  divWinMsg.firstChild.textContent = `Felicidades has encontrado todas las parejas en ${intents.textContent} intentos.`;
+  divWinMsg.lastChild.textContent = "Si quieres jugar otra partida pulsa reset";
+  playBoard.classList.add("hidden");
+  divWinMsg.classList.remove("hidden");
+};
+
 startButton.addEventListener("click", startGame);
 addClickListener(cards, compareCards);
-// randomizeCards();
 
 const reset = document.querySelector("#reset");
 reset.addEventListener("click", () => {
+  if (points === 8) {
+    rules.classList.toggle("hidden");
+    divWinMsg.classList.toggle("hidden");
+    playBoard.classList.toggle("hidden");
+  }
   intents.textContent = 0;
   points = 0;
   for (const card of cards) {

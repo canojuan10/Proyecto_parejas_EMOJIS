@@ -28,6 +28,21 @@ body {
   display: flex;
   flex-direction: column;
 }
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--colorBasicBlack);
+}
+h1 {
+  letter-spacing: 1rem;
+  text-align: center;
+  flex-grow: 3;
+  font-size: var(--fontSizeH1);
+}
 header {
   align-items: center;
   justify-content: center;
@@ -79,28 +94,13 @@ footer {
   display: flex;
   border-top: solid 1px var(--colorBasicBlack);
 }
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  color: var(--colorBasicBlack);
-}
-h1 {
-  letter-spacing: 1rem;
-  text-align: center;
-  flex-grow: 3;
-  font-size: var(--fontSizeH1);
+#scoreboard p {
+  font-size: var(--fontSizeH2);
 }
 div h2 {
   color: var(--colorBasicBlack);
   text-align: center;
   margin-bottom: 0rem;
-}
-#scoreboard p {
-  font-size: var(--fontSizeH2);
 }
 
 button {
@@ -142,6 +142,31 @@ button:focus {
 li {
   font-size: var(--fontSizeH5);
   margin-bottom: 1rem;
-
   margin-right: 2rem;
+}
+#win-msg {
+  padding: 2rem 0;
+  border-radius: 20px;
+  font-size: var(--fontSizeBase);
+  text-align: center;
+  top: 25%;
+  transform: translateY(50%);
+  right: 50%;
+  transform: translateX(50%);
+  width: 50%;
+  outline-width: 8px;
+  position: absolute;
+  background-color: var(--colorBasicBlack);
+  color: var(--colorWhite);
+  box-shadow: 10px 10px 10px var(--colorBasicBlack);
+}
+#win-msg h2 {
+  padding-bottom: 2rem;
+  font-size: var(--fontSizeH3);
+}
+
+.hidden {
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s;
 }
