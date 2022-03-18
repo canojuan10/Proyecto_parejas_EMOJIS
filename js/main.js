@@ -12,7 +12,6 @@ const cards = document.querySelectorAll(".card");
 
 const intents = document.querySelector("#intents");
 
-
 let points = 0;
 
 let card1;
@@ -20,8 +19,6 @@ let card1Value;
 let card2;
 let card2Value;
 let flippedCards;
-
-
 
 const startButton = document.querySelector("#start");
 
