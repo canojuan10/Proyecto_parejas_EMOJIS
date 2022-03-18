@@ -148,3 +148,13 @@ li {
 .winner {
   pointer-events: none;
 }
+
+.endGame {
+  background-color: black;
+  font-size: 5rem;
+  color: white;
+  left: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 2s;
+}
