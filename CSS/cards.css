@@ -32,6 +32,7 @@ article {
   background-color: black;
 }
 .card.flipped {
+  pointer-events: none;
   transform: rotateY(180deg);
   transition: transform 1s;
 }
@@ -44,3 +45,8 @@ article {
   width: 160px;
   background-color: var(--colorBasicBlack);
 } */
+.hidden {
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s;
+}

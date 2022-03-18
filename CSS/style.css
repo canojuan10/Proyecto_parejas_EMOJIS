@@ -61,6 +61,7 @@ main {
   gap: 32px;
 }
 #playboard {
+  transition: opacity 1s;
   justify-content: center;
   grid-template-columns: 200px 200px 200px 200px;
   display: grid;
@@ -131,7 +132,6 @@ button:focus {
   outline: solid 4px var(--colorBasicBlack);
 }
 #start {
-  visibility: hidden;
   font-size: var(--fontSizeH1);
   outline-width: 8px;
   position: absolute;
