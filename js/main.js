@@ -1,7 +1,19 @@
-"use strict";
+import { randomizeCards } from "./randomFunction/randomizeCards.js";
+import { addIntentCounter } from "./auxiliaryFunctions/addIntentCounter.js";
+import {
+  putUp,
+  putDown,
+  removeClickListener,
+  addClickListener,
+} from "./auxiliaryFunctions/cardComparation.js";
+("use strict");
 
 const cards = document.querySelectorAll(".card");
+
 const intents = document.querySelector("#intents");
+
+
+let points = 0;
 
 let card1;
 let card1Value;
@@ -9,48 +21,43 @@ let card2;
 let card2Value;
 let flippedCards;
 
+
+
+const startButton = document.querySelector("#start");
+
 const compareCards = (e) => {
   const currentCard = e.currentTarget;
-  currentCard.classList.add("flipped");
+  putUp(currentCard);
   card1 = currentCard;
   card1Value = currentCard.dataset.cardImg;
+  removeClickListener(cards, compareCards);
+  addClickListener(cards, reveal);
 
-  for (const card of cards) {
-    card.removeEventListener("click", compareCards);
-  }
-
-  for (const card of cards) {
-    card.addEventListener("click", reveal);
-  }
-  flippedCards = document.querySelectorAll("flipped");
-  for (const card of flippedCards) {
-    card.removeEventListener("click", reveal);
-  }
+  flippedCards = document.querySelectorAll(".flipped");
+  console.log(flippedCards);
+  removeClickListener(flippedCards, reveal);
 
   const idInterval = setInterval(() => {
     if (card1Value && card2Value) {
       if (card1Value === card2Value) {
-        console.log("son iguales");
+        points++;
+        console.log(points);
       } else {
-        console.log("no son iguales");
         setTimeout(() => {
-          card1.classList.remove("flipped");
-          card2.classList.remove("flipped");
+          putDown(card1);
+          putDown(card2);
         }, 1000);
       }
       clearInterval(idInterval);
 
       card1Value = "";
       card2Value = "";
-      addCounter();
+      addIntentCounter();
       setTimeout(() => {
-        for (const card of cards) {
-          card.addEventListener("click", compareCards);
-        }
-        flippedCards = document.querySelectorAll("flipped");
-        for (const card of flippedCards) {
-          card.removeEventListener("click", compareCards);
-        }
+        addClickListener(cards, compareCards);
+
+        // flippedCards = document.querySelectorAll(".flipped");
+        // removeClickListener(flippedCards, compareCards);
       }, 2000);
     }
   }, 500);
@@ -58,16 +65,14 @@ const compareCards = (e) => {
 
 const reveal = (e) => {
   const currentCard = e.currentTarget;
-  currentCard.classList.add("flipped");
+  putUp(currentCard);
   card2 = currentCard;
   card2Value = currentCard.dataset.cardImg;
-  for (const card of cards) {
-    card.removeEventListener("click", reveal);
-  }
+  removeClickListener(cards, reveal);
 };
-
-const randomizeCards = () => {
+const startGame = () => {
   const playBoard = document.querySelector("#playboard");
+
   const collectionCards = playBoard.children;
   const setRandom = new Set();
   for (let i = 0; i <= 16; i++) {
@@ -86,10 +91,25 @@ const addCounter = () => {
   let numberIntents = +intents.textContent;
   numberIntents++;
   intents.textContent = numberIntents;
+  points = 0;
+  randomizeCards();
+  startButton.classList.add("hidden");
+  setTimeout(() => {
+    playBoard.classList.remove("hidden");
+  }, 1000);
 };
 
 //___________________________________________________________________
-for (const card of cards) {
-  card.addEventListener("click", compareCards);
-}
-randomizeCards();
+startButton.addEventListener("click", startGame);
+addClickListener(cards, compareCards);
+// randomizeCards();
+
+const reset = document.querySelector("#reset");
+reset.addEventListener("click", () => {
+  intents.textContent = 0;
+  points = 0;
+  for (const card of cards) {
+    card.classList.remove("flipped");
+  }
+  setTimeout(randomizeCards, 1000);
+});
