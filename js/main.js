@@ -62,7 +62,8 @@ const reveal = (e) => {
 };
 const startGame = () => {
   const playBoard = document.querySelector("#playboard");
-
+  points = 0;
+  randomizeCards();
   startButton.classList.add("hidden");
   setTimeout(() => {
     playBoard.classList.remove("hidden");
