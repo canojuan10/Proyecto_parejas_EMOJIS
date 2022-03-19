@@ -75,8 +75,9 @@ main {
   gap: 32px;
 }
 #playboard {
+  align-content: center;
   transition: opacity 1s;
-  justify-content: center;
+  justify-items: center;
   grid-template-columns: 200px 200px 200px 200px;
   display: grid;
   grid-area: playboard;
@@ -172,11 +173,17 @@ li {
   transition: opacity 1s;
 }
 /* Media query */
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
+  #start {
+    right: 50%;
+    transform: translateX(50%);
+    margin: 0;
+  }
   main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
   #scoreboard {
     width: 300px;
@@ -191,9 +198,13 @@ li {
   }
 }
 @media (max-width: 500px) {
-  #playboard {
-    grid-template-columns: 120px 120px 120px;
+  h1 {
+    font-size: var(--fontSizeH3);
+  }
 
+  #playboard {
+    margin-right: 0;
+    grid-template-columns: 120px 120px 120px;
     align-content: center;
     justify-items: center;
     grid-template-areas:
@@ -201,10 +212,15 @@ li {
       "card4 card5 card6"
       "card7 card8 card9"
       "card10 card11 card12"
-      "card13 card14 card15";
+      "card13 card14 card15"
+      "card16 card16 card16";
   }
-  #card16 {
-    grid-column-start: 1;
-    grid-column-end: 4;
+}
+@media (max-width: 650px) {
+  footer {
+    display: none;
+  }
+  #win-msg h2 {
+    font-size: var(--fontSizeH4);
   }
 }

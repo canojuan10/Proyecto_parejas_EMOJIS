@@ -36,10 +36,12 @@ article {
   transform: rotateY(180deg);
   transition: transform 1s;
 }
-
+#empty-cell {
+  display: none;
+}
 /* media query */
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
   article {
     width: 100px;
     height: 120px;

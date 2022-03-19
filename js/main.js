@@ -65,7 +65,7 @@ const reveal = (e) => {
 
 const startGame = () => {
   points = 0;
-  // randomizeCards();
+  randomizeCards();
   startButton.classList.add("hidden");
   setTimeout(() => {
     playBoard.classList.remove("hidden");
