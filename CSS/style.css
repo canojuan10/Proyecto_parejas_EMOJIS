@@ -75,6 +75,7 @@ main {
   gap: 32px;
 }
 #playboard {
+  justify-self: center;
   align-content: center;
   transition: opacity 1s;
   justify-items: center;
