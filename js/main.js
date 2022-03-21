@@ -89,6 +89,7 @@ const reset = document.querySelector("#reset");
 reset.addEventListener("click", () => {
   if (points === 8) {
     rules.classList.toggle("hidden");
+    rules.classList.toggle("display-none");
     divWinMsg.classList.toggle("hidden");
     playBoard.classList.toggle("hidden");
   }
