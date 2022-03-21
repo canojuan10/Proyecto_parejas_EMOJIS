@@ -1,4 +1,4 @@
-import { randomizeCards } from "./auxiliaryFunctions/randomCards_hugo.js";
+import { randomizeCards } from "./auxiliaryFunctions/randomCards.js";
 import { addIntentCounter } from "./auxiliaryFunctions/addIntentCounter.js";
 import {
   putUp,
@@ -33,7 +33,6 @@ const compareCards = (e) => {
     if (card1Value && card2Value) {
       if (card1Value === card2Value) {
         points++;
-        console.log(points);
       } else {
         setTimeout(() => {
           putDown(card1);

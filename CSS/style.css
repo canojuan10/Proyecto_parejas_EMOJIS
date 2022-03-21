@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&display=swap");
 :root {
   --fontSizeBase: 18px;
   --fontSizeCaptionText: 14px;
@@ -10,7 +11,7 @@
   --colorYellow: hsl(60, 100%, 50%, 0.5);
   --colorWhite: hsl(160, 10%, 94%, 0.7);
 }
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&display=swap");
+
 * {
   padding: 0;
   margin: 0;
@@ -64,7 +65,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: none;
+  background-color: transparent;
   outline: solid 4px var(--colorBasicBlack);
   margin-right: 2rem;
   margin-top: 2.5rem;
