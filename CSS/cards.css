@@ -20,7 +20,9 @@ article {
   user-select: none;
   margin-bottom: 1rem;
 }
-
+.display-none {
+  display: none;
+}
 .front {
   transform: rotateY(180deg);
   background-color: whitesmoke;

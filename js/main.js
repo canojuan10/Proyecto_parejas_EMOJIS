@@ -73,6 +73,7 @@ const startGame = () => {
 
 const win = () => {
   rules.classList.add("hidden");
+  rules.classList.add("display-none");
 
   divWinMsg.firstElementChild.textContent = `Felicidades has encontrado todas las parejas en ${intents.textContent} intentos.`;
   divWinMsg.lastElementChild.innerHTML =
