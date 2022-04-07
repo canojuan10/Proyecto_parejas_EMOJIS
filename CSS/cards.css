@@ -6,7 +6,7 @@ article {
   -webkit-transition: transform 1s;
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
-  margin: 0.5rem;
+  margin: 0.25rem;
 }
 
 .front,
@@ -52,8 +52,7 @@ article {
 @media (max-width: 1200px) {
   article {
     width: 80px;
-    height: 110px;
-    margin: 0.25 rem;
+    height: 100px;
   }
   .front {
     font-size: 64px;

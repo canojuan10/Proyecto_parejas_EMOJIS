@@ -6,7 +6,7 @@ import {
   removeClickListener,
   addClickListener,
 } from "./auxiliaryFunctions/cardsOpations.js";
-("use strict");
+
 const rules = document.querySelector("#brief");
 const cards = document.querySelectorAll(".card");
 const playBoard = document.querySelector("#playboard");
@@ -21,45 +21,43 @@ let card2Value;
 
 const startButton = document.querySelector("#start");
 
-const compareCards = (e) => {
+const reveal = (e) => {
   const currentCard = e.currentTarget;
   putUp(currentCard);
   card1 = currentCard;
   card1Value = currentCard.dataset.cardImg;
-  removeClickListener(cards, compareCards);
-  addClickListener(cards, reveal);
-
-  const idInterval = setInterval(() => {
-    if (card1Value && card2Value) {
-      if (card1Value === card2Value) {
-        points++;
-      } else {
-        setTimeout(() => {
-          putDown(card1);
-          putDown(card2);
-        }, 1000);
-      }
-      clearInterval(idInterval);
-
-      card1Value = "";
-      card2Value = "";
-      addIntentCounter();
-      if (points === 8) {
-        win();
-      }
-      setTimeout(() => {
-        addClickListener(cards, compareCards);
-      }, 1000);
-    }
-  }, 200);
+  removeClickListener(cards, reveal);
+  addClickListener(cards, comparationAndReveal);
 };
 
-const reveal = (e) => {
+const comparationAndReveal = (e) => {
+  e.stopPropagation();
   const currentCard = e.currentTarget;
   putUp(currentCard);
   card2 = currentCard;
   card2Value = currentCard.dataset.cardImg;
-  removeClickListener(cards, reveal);
+  if (card1Value && card2Value) {
+    if (card1Value === card2Value) {
+      points++;
+    } else {
+      setTimeout(() => {
+        putDown(card1);
+        putDown(card2);
+      }, 1000);
+    }
+
+    card1Value = "";
+    card2Value = "";
+    addIntentCounter();
+    if (points === 8) {
+      win();
+    }
+    setTimeout(() => {
+      addClickListener(cards, reveal);
+    }, 1000);
+  }
+
+  removeClickListener(cards, comparationAndReveal);
 };
 
 const startGame = () => {
@@ -74,16 +72,13 @@ const startGame = () => {
 const win = () => {
   rules.classList.add("hidden");
   rules.classList.add("display-none");
-
   divWinMsg.firstElementChild.textContent = `Felicidades has encontrado todas las parejas en ${intents.textContent} intentos.`;
-  divWinMsg.lastElementChild.innerHTML =
-    "Si quieres jugar otra partida pulsa <strong style='color:white;'> RESET </strong>";
   playBoard.classList.add("hidden");
   divWinMsg.classList.remove("hidden");
 };
 
 startButton.addEventListener("click", startGame);
-addClickListener(cards, compareCards);
+addClickListener(cards, reveal);
 
 const reset = document.querySelector("#reset");
 reset.addEventListener("click", () => {

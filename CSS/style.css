@@ -176,7 +176,9 @@ li {
   opacity: 0;
   transition: opacity 1s;
 }
+
 /* Media query */
+
 @media (max-width: 1200px) {
   #start {
     right: 50%;
@@ -204,12 +206,12 @@ li {
 }
 @media (max-width: 500px) {
   h1 {
-    font-size: var(--fontSizeH3);
+    font-size: var(--fontSizeH4);
   }
 
   #playboard {
     margin-right: 0;
-    grid-template-columns: 120px 120px 120px;
+    grid-template-columns: 100px 100px 100px;
     align-content: center;
     justify-items: center;
     grid-template-areas:
